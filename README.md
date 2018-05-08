@@ -10,9 +10,9 @@ Add a file like 99-usbftdi.rules to /etc/udev/rules.d with the following content
 ```
 ACTION=="add", ATTRS{idVendor}=="16a6", ATTRS{idProduct}=="1000", RUN+="/sbin/modprobe ftdi_sio" RUN+="/bin/sh -c 'echo 16a6 1000 > /sys/bus/usb-serial/drivers/ftdi_sio/new_id'"
 ```
-Maybe you have to force your system to update udev rules, but that is distro sepcific.
+Maybe you have to force your system to update udev rules, but that is distro specific.
 
-Then plugin your devivce. dmesg should show something like:
+Then plugin your device. dmesg should show something like:
 ```
 [28534.487368] usb 3-3.4: new full-speed USB device number 10 using xhci_hcd
 [28534.586482] usb 3-3.4: New USB device found, idVendor=16a6, idProduct=1000
@@ -26,11 +26,13 @@ Then plugin your devivce. dmesg should show something like:
 [28534.630472] usb 3-3.4: Detected FT232RL
 [28534.630822] usb 3-3.4: FTDI USB Serial Device converter now attached to ttyUSB1
 ```
+
 ## Preparations for Windows usage
 
 Under windows you can simply use the driver that is coming with the device. You just have to find out, which serial port (COMx) is used.
 
 ## Installation
 
-Simply copy this file to your wireshark extcap directory (Help > About Wireshark > Folders) and make sure it is executable.
+Simply copy dpa400dump.py to your wireshark extcap directory (Help > About Wireshark > Folders) and make 
+sure it is executable.
 After restarting wireshark you should see a DPA400 capture interface.
