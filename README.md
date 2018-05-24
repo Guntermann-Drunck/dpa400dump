@@ -1,6 +1,10 @@
 # dpa400dump
 A wireshark extcap for the Unigraf DPA400 DisplayPort AUX channel monitor
 
+## Dependencies
+- Python2
+- pyserial Package
+
 ## Preparations for Linux usage
 
 The DPA400 USB interface is a FTDI 232R with custom VID/PID.
@@ -33,6 +37,12 @@ Under windows you can simply use the driver that is coming with the device. You 
 
 ## Installation
 
-Simply copy dpa400dump.py to your wireshark extcap directory (Help > About Wireshark > Folders) and make 
+- Under Linux, simply copy dpa400dump.py to your wireshark extcap directory (Help > About Wireshark > Folders) and make 
 sure it is executable.
+- Under Windows, you need to place a .bat wrapper file in the extcap directory. It must look (paths adapted) like this:
+```
+@echo off
+c:\python27\python c:\development\dpa400dump\dpa400dump.py %*
+```
+
 After restarting wireshark you should see a DPA400 capture interface.
